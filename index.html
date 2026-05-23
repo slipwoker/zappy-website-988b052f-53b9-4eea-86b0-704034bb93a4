@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>דירות לפי שעה בחיפה — צימר ליד הים בחיפה</title>
+    <meta name="description" content="A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique char">
+    <meta name="keywords" content="דירות לפי שעה בחיפה, השכרת דירות לפי שעה בחיפה, צימר בחיפה, לפי שעה בחיפה, דירה להשכרה בחיפה לזמן קצר">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '988b052f-53b9-4eea-86b0-704034bb93a4',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="דירות לפי שעה בחיפה — צימר ליד הים בחיפה">
+    <meta property="og:description" content="A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique char">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="דירות לפי שעה בחיפה — צימר ליד הים בחיפה">
+    <meta name="twitter:description" content="A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique char">
+    <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .skip-link { position: absolute; top: 0; left: 0; transform: translateY(-200%); padding: 12px 18px; background: var(--bg-dark, #1a1a1a); color: var(--text-light, #fff); font-weight: 600; border-radius: 0 0 8px 0; z-index: 10000; }
+    .skip-link:focus { transform: none; outline: 2px solid var(--ring, #fff); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--ring, currentColor); outline-offset: 3px; }
+  </style>
+
+
+  
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+      [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 10px !important; padding-right: 28px !important; }
+      .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus (exclude catalog sub-menus that use <a> children instead of <li>) */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))):not(:has(> a)), .sub-menu:not(:has(li)):not(:has(> a)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .navbar .sub-menu.mobile-expanded, .nav-menu .sub-menu.mobile-expanded, #navMenu .sub-menu.mobile-expanded { max-height: none !important; overflow-y: visible !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-dark) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-dark) !important; white-space: normal !important; }
+        .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+        [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 0 !important; padding-right: 28px !important; }
+        .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+        .nav-menu.active, #navMenu.active { max-width: 100vw !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-dark) !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+
+    <style id="zappy-widget-visibility">
+      html[dir="rtl"] .whatsapp-float { right: 20px !important; left: auto !important; }
+      html[dir="ltr"] .whatsapp-float, html:not([dir]) .whatsapp-float { left: 20px !important; right: auto !important; }
+      html[dir="rtl"] #mic-access-tool-general-button, html[dir="rtl"] .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="rtl"] ._access-icon { left: 20px !important; right: auto !important; }
+      html[dir="ltr"] #mic-access-tool-general-button, html[dir="ltr"] .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="ltr"] ._access-icon,
+      html:not([dir]) #mic-access-tool-general-button, html:not([dir]) .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
+      html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
+      @media (max-width: 768px) { .whatsapp-float { display: flex !important; } }
+      @media (min-width: 769px) { .whatsapp-float { display: flex !important; } }
+      @media (max-width: 768px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+      @media (min-width: 769px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+
+  <button class="phone-header-btn" data-phone="[business_phone]" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+
+  <div class="nav-container">
+    <div class="nav-right-group"><div class="nav-brand">
+      <a href="/" class="logo-link"><img class="logo" src="/assets/site-----image-1.webp" alt="צימר ליד הים בחיפה"></a>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="#features">מאפיינים</a></li><li><a href="#benefits">יתרונות</a></li><li><a href="#gallery">גלריה</a></li><li><a href="#testimonials">המלצות</a></li><li><a href="#stats">נתונים</a></li></ul></div>
+
+    
+
+    <div class="nav-cta-container">
+      <a href="#contact" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+<script>
+
+// Navbar Mobile Menu Toggle and Contrast Fix
+(function() {
+  // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts
+  window.addEventListener('load', function() {
+    
+    // FIX MOBILE BUTTON CONTRAST
+    // Detect navbar background color and apply contrasting color to mobile buttons
+    const navbar = document.querySelector('.navbar, nav, header');
+    if (!navbar) {
+      console.log('[Navbar] Navbar element not found');
+      return;
+    }
+    
+    // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors
+    // These are used in multiple places below
+    let mobileToggle = document.getElementById('mobileToggle') ||
+                       document.querySelector('.mobile-toggle') ||
+                       document.querySelector('.hamburger') ||
+                       document.querySelector('.hamburger-menu') ||
+                       document.querySelector('.menu-toggle') ||
+                       document.querySelector('.burger-menu') ||
+                       document.querySelector('[aria-label="Menu"]') ||
+                       document.querySelector('[aria-label="תפריט"]');
+    
+    const phoneBtn = document.querySelector('.phone-header-btn');
+    
+    const computedStyle = window.getComputedStyle(navbar);
+    let bgColor = computedStyle.backgroundColor;
+    
+    console.log('[Navbar] Initial navbar background:', bgColor);
+    
+    // Check if background is transparent or rgba with 0 alpha
+    const isTransparent = bgColor === 'transparent' || 
+                         bgColor === 'rgba(0, 0, 0, 0)' ||
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
+    
+    if (isTransparent) {
+      // Check for background-image or gradient
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[Navbar] Navbar has background image/gradient, using dark text');
+        bgColor = 'rgb(240, 240, 240)'; // Assume light background
+      } else {
+        // Transparent navbar - check body background
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        console.log('[Navbar] Navbar transparent, using body background:', bodyBg);
+        bgColor = bodyBg;
+      }
+    }
+    
+    // Calculate luminance to determine if background is light or dark
+    const rgb = bgColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a)
+      // No dynamic color overrides needed - colors come from the generated navbar CSS
+      console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')');
+      
+      // FIX ICON SIZES - Ensure SVGs are properly sized and visible
+      // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES
+      const criticalCSS = document.createElement('style');
+      criticalCSS.id = 'zappy-mobile-nav-fix';
+      const htmlLang = document.documentElement.lang || 'en';
+      const htmlDir = document.documentElement.dir || 'ltr';
+      // Check both dir attribute AND lang for RTL detection
+      // dir="rtl" is the most reliable indicator
+      const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar';
+      
+      criticalCSS.textContent = `
+        /* Hide mobile buttons on desktop, show only on mobile */
+        @media (min-width: 769px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            display: none !important;
+          }
+        }
+        
+        /* Show and position mobile buttons correctly on mobile */
+        @media (max-width: 768px) {
+          .navbar,
+          nav.navbar {
+            min-height: 70px !important;
+          }
+
+          .mobile-toggle,
+          .phone-header-btn {
+            position: absolute !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+            transform: none !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 6px !important;
+            background: none !important;
+            color: var(--nav-text, var(--text-dark)) !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+          }
+
+          html[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          body[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] header .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] nav .phone-header-btn {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          
+          /* LTR positioning (default): hamburger LEFT, phone RIGHT */
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+          html[dir="ltr"] .mobile-toggle {
+            left: 12px !important;
+            right: auto !important;
+          }
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+          html[dir="ltr"] .phone-header-btn {
+            right: 12px !important;
+            left: auto !important;
+          }
+          
+          /* RTL positioning: hamburger RIGHT, phone LEFT */
+          html[dir="rtl"] .mobile-toggle,
+          html[lang="he"] .mobile-toggle,
+          html[lang="ar"] .mobile-toggle {
+            right: 12px !important;
+            left: auto !important;
+          }
+          html[dir="rtl"] .phone-header-btn,
+          html[lang="he"] .phone-header-btn,
+          html[lang="ar"] .phone-header-btn {
+            left: 12px !important;
+            right: auto !important;
+          }
+          
+          /* CRITICAL: Ensure nav-container has min-height on mobile */
+          /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */
+          .nav-container {
+            min-height: 70px !important;
+            position: relative !important;
+          }
+          
+          /* Ensure SVG icons are properly sized and inherit color */
+          .mobile-toggle svg,
+          .phone-header-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+            /* Don't force display - let JavaScript control hamburger/close toggle */
+          }
+          
+          /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */
+          /* that creates a visible ghost box when CTA button is hidden */
+          .nav-cta-container {
+            box-shadow: none !important;
+            padding: 0 !important;
+          }
+          
+          /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */
+          /* (only the CTA button is inside, and it's hidden on mobile) */
+          .nav-cta-container:not(:has(.lang-switcher)) {
+            display: none !important;
+          }
+          
+          /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */
+          /* The .image-fade-gradient has bottom: -30px (extends below parent) */
+          /* On mobile stacked layout, this overlaps the h1 text below the image */
+          .hero-image-column {
+            overflow: hidden !important;
+          }
+          .image-fade-gradient {
+            bottom: 0 !important;
+          }
+          
+          /* Hide desktop language switcher on mobile - hamburger menu handles it */
+          /* High specificity to override stored CSS */
+          .lang-switcher,
+          .nav-cta-container .lang-switcher,
+          .nav-container .lang-switcher,
+          .navbar .lang-switcher,
+          .navbar .nav-cta-container .lang-switcher {
+            display: none !important;
+          }
+        }
+      `;
+      
+      // Remove existing fix if present and inject new one
+      const existing = document.getElementById('zappy-mobile-nav-fix');
+      if (existing) existing.remove();
+      document.head.appendChild(criticalCSS);
+      
+      console.log('[Navbar] Critical CSS injected for mobile nav positioning');
+      
+      // ONLY apply inline positioning styles on mobile viewport
+      // On desktop, the CSS handles hiding these buttons with display: none
+      // Inline styles were breaking desktop layout by overriding CSS
+      const isMobileViewport = window.innerWidth <= 768;
+      
+      if (mobileToggle) {
+        // Icon sizing applies to all viewports for consistency
+        const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+        
+        if (hamburgerIcon) {
+          hamburgerIcon.style.setProperty('width', '24px', 'important');
+          hamburgerIcon.style.setProperty('height', '24px', 'important');
+          hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default
+        }
+        if (closeIcon) {
+          closeIcon.style.setProperty('width', '24px', 'important');
+          closeIcon.style.setProperty('height', '24px', 'important');
+          closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          mobileToggle.style.setProperty('position', 'absolute', 'important');
+          mobileToggle.style.setProperty('top', '0', 'important');
+          mobileToggle.style.setProperty('bottom', '0', 'important');
+          mobileToggle.style.setProperty('margin-top', 'auto', 'important');
+          mobileToggle.style.setProperty('margin-bottom', 'auto', 'important');
+          mobileToggle.style.setProperty('transform', 'none', 'important');
+          mobileToggle.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          
+          console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          mobileToggle.style.removeProperty('position');
+          mobileToggle.style.removeProperty('top');
+          mobileToggle.style.removeProperty('transform');
+          mobileToggle.style.removeProperty('z-index');
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning');
+        }
+      }
+      
+      if (phoneBtn) {
+        // Icon sizing applies to all viewports
+        const phoneIcon = phoneBtn.querySelector('svg');
+        if (phoneIcon) {
+          phoneIcon.style.width = '24px';
+          phoneIcon.style.height = '24px';
+          phoneIcon.setAttribute('width', '24');
+          phoneIcon.setAttribute('height', '24');
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          phoneBtn.style.setProperty('position', 'absolute', 'important');
+          phoneBtn.style.setProperty('top', '0', 'important');
+          phoneBtn.style.setProperty('bottom', '0', 'important');
+          phoneBtn.style.setProperty('margin-top', 'auto', 'important');
+          phoneBtn.style.setProperty('margin-bottom', 'auto', 'important');
+          phoneBtn.style.setProperty('transform', 'none', 'important');
+          phoneBtn.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          
+          console.log('[Navbar] Phone button positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          phoneBtn.style.removeProperty('position');
+          phoneBtn.style.removeProperty('top');
+          phoneBtn.style.removeProperty('transform');
+          phoneBtn.style.removeProperty('z-index');
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared phone button inline positioning');
+        }
+      }
+    } else {
+      console.log('[Navbar] Could not parse background color:', bgColor);
+    }
+    
+    // MOBILE MENU TOGGLE
+    // Re-query in case DOM changed (mobileToggle already declared at top of function)
+    mobileToggle = document.getElementById('mobileToggle') ||
+                   document.querySelector('.mobile-toggle') ||
+                   document.querySelector('.hamburger') ||
+                   document.querySelector('.hamburger-menu') ||
+                   document.querySelector('.menu-toggle') ||
+                   document.querySelector('.burger-menu') ||
+                   document.querySelector('[aria-label="Menu"]') ||
+                   document.querySelector('[aria-label="תפריט"]');
+    
+    // EXPANDED SEARCH: Find nav menu by ID or class
+    const navMenu = document.getElementById('navMenu') ||
+                  document.querySelector('.nav-menu') ||
+                  document.querySelector('.nav-links') ||
+                  document.querySelector('nav ul:not(.submenu)');
+    
+    if (!mobileToggle || !navMenu) {
+      console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu });
+      return;
+    }
+    
+    // Ensure navMenu has ID for CSS targeting
+    if (!navMenu.id) {
+      navMenu.id = 'navMenu';
+    }
+    
+    console.log('[Navbar] Initializing mobile menu...');
+    
+    // Remove any existing event listeners by cloning the button
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    
+    // Toggle menu handler (shared by click and touchend)
+    function handleToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+      const closeIcon = newToggle.querySelector('.close-icon');
+      const isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed');
+      } else {
+        // Open menu
+        navMenu.classList.add('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+        console.log('[Navbar] Menu opened');
+      }
+    }
+    
+    // Use click for desktop/emulation and touchend as iOS Safari fallback.
+    // Prevent double-fire with a timestamp guard.
+    var lastToggleTime = 0;
+    function guardedToggle(e) {
+      var now = Date.now();
+      if (now - lastToggleTime < 300) return;
+      lastToggleTime = now;
+      handleToggle(e);
+    }
+    
+    newToggle.addEventListener('click', guardedToggle);
+    newToggle.addEventListener('touchend', guardedToggle);
+    
+    // Close menu when clicking nav links (but NOT dropdown toggles)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        // Don't close if it's a dropdown child (unless it's a real navigation link)
+        if (this.getAttribute('href') === '#') return;
+        
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed (link clicked)');
+      });
+    });
+    
+    // DROPDOWN MENU TOGGLE (for mobile and touch devices)
+    var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        if (!parent) return;
+        
+        // Close other open dropdowns at the same level
+        var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open');
+        siblings.forEach(function(sib) {
+          if (sib !== parent) sib.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+        console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed');
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
+        openDropdowns.forEach(function(dd) { dd.classList.remove('open'); });
+      }
+    });
+    
+    console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns');
+    
+    // Phone button functionality (phoneBtn already declared at top of function)
+    if (phoneBtn) {
+      phoneBtn.addEventListener('click', function() {
+        // Get phone number from placeholder in page or use default
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        const phoneNumber = phoneLinks.length > 0 
+          ? phoneLinks[0].getAttribute('href').replace('tel:', '')
+          : '[business_phone]';
+        
+        window.location.href = 'tel:' + phoneNumber;
+        console.log('[Navbar] Phone button clicked');
+      });
+    }
+    
+    console.log('[Navbar] Mobile menu initialized successfully');
+    
+    // WhatsApp button visibility is now controlled via CSS (siteSettings).
+    // No JS-based desktop hiding — the button is visible on both mobile and desktop by default.
+  });
+})();
+
+</script>
+  
+  <main id="main">
+    <section data-band-index="0" id="hero" class="index-hero-section" data-layout-spec="בית-hero" dir="rtl" data-hero-type="fullscreen-scrim">
+  <!-- Background Image Layer -->
+  <div class="index-hero-bg">
+    <img loading="eager" fetchpriority="high" data-hero-bg="true" data-placeholder="index-hero-image-1" data-context="Bright Mediterranean morning vacation rental interior in Haifa Israel, sunlit living room with large windows overlooking the blue sea, white linen furniture, warm wood accents, fresh flowers on a table, soft golden morning light streaming through sheer curtains, calm and elegant atmosphere, naturally lit not oversaturated, coastal hospitality feel" width="1200" height="700" src="/assets/site-index-hero-image-1.webp" alt="צימר ליד הים בחיפה – נוף ים בוקר שקט">
+  </div>
+
+  <!-- Scrim Overlay -->
+  <div class="index-hero-scrim" aria-hidden="true"></div>
+
+  <!-- Decorative Shell Icon -->
+  <div class="index-hero-shell-topper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 4C16 4 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 4 16 4Z" stroke="#F47C5C" stroke-width="1.5" fill="none"></path>
+      <path d="M16 26 L16 30" stroke="#F47C5C" stroke-width="1.5" stroke-linecap="round"></path>
+      <path d="M12 28 L20 28" stroke="#F47C5C" stroke-width="1.5" stroke-linecap="round"></path>
+      <path d="M10 16 Q16 12 22 16" stroke="#F47C5C" stroke-width="1.2" fill="none" stroke-linecap="round"></path>
+      <path d="M9 19 Q16 15 23 19" stroke="#F47C5C" stroke-width="1.2" fill="none" stroke-linecap="round"></path>
+    </svg>
+  </div>
+
+  <!-- Hero Container -->
+  <div class="index-hero-container">
+
+    <!-- Frosted Card -->
+    <article class="index-hero-card">
+
+      <!-- Card Inner -->
+      <div class="index-hero-card-inner">
+
+        <!-- Eyebrow Label -->
+        <span class="index-hero-eyebrow">חיפה, ישראל · ליד הים</span>
+
+        <!-- H1 -->
+        <h1 class="index-hero-h1">בוקר שקט,<br>ים כחול מהחלון</h1>
+
+        <!-- Wave Underline -->
+        <div class="index-hero-wave-underline" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="80" height="14" viewBox="0 0 80 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 7 Q10 2 20 7 T40 7 T60 7 T80 7" stroke="#1D6FA3" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"></path>
+          </svg>
+        </div>
+
+        <!-- Supporting Subtitle -->
+        <h3 class="index-hero-subtitle">בוקרות שלווים, מרחק צעדים מהחוף – צימר מושלם לזוגות, משפחות ושהיות עבודה מרוחקת בחיפה.</h3>
+
+        <!-- CTA Buttons -->
+        <div class="index-hero-ctas">
+          <a href="#contact" class="index-hero-btn-primary">צרו קשר לשאלות ותיאום</a>
+          <a href="#gallery" class="index-hero-btn-secondary">לצפייה בנכס</a>
+        </div>
+
+        <!-- Trust Line -->
+        <div class="index-hero-trust">
+          <span class="index-hero-trust-item">
+            <svg data-element-type="icon" data-icon-type="svg" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L10 6H15L11 9.5L12.5 14.5L8 11.5L3.5 14.5L5 9.5L1 6H6L8 1Z" fill="#F47C5C"></path></svg>
+            מתאים לזוגות
+          </span>
+          <span class="index-hero-trust-sep" aria-hidden="true">·</span>
+          <span class="index-hero-trust-item">
+            <svg data-element-type="icon" data-icon-type="svg" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L10 6H15L11 9.5L12.5 14.5L8 11.5L3.5 14.5L5 9.5L1 6H6L8 1Z" fill="#F47C5C"></path></svg>
+            חופשה משפחתית
+          </span>
+          <span class="index-hero-trust-sep" aria-hidden="true">·</span>
+          <span class="index-hero-trust-item">
+            <svg data-element-type="icon" data-icon-type="svg" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L10 6H15L11 9.5L12.5 14.5L8 11.5L3.5 14.5L5 9.5L1 6H6L8 1Z" fill="#F47C5C"></path></svg>
+            Workation
+          </span>
+        </div>
+
+      </div>
+    </article>
+  </div>
+
+  <!-- Bottom Wave Divider -->
+  <div class="index-hero-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,38 Q100,20 200,36 T400,30 Q500,24 600,36 T800,28 Q900,22 1000,34 T1200,30 L1200,72 Z" fill="var(--bg-light)"></path>
+    </svg>
+  </div>
+
+</section>
+
+<section data-band-index="1" id="features" class="index-features-section" data-layout-spec="בית-features" dir="rtl">
+  <div class="index-features-container">
+
+    <!-- Intro Block -->
+    <div class="index-features-intro">
+      <span class="index-features-eyebrow">מה מחכה לכם כאן</span>
+      <h2 class="index-features-heading">כל מה שצריך לחופשה מושלמת<br>ליד הים בחיפה</h2>
+      <p class="index-features-subtext">צימר בחיפה שמשלב נוחות אמיתית, שקט ואווירה ים-תיכונית מרגיעה — בלי עודפים, בלי סיבוכים. בדיוק מה שצריך כדי להירגע ולהתרענן.</p>
+    </div>
+
+    <!-- Feature Cards Grid -->
+    <div class="index-features-grid">
+
+      <!-- Card 1: Beach proximity -->
+      <article class="index-features-card">
+        <div class="index-features-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true" width="36" height="36">
+            <path d="M6 36 Q12 24 24 28 Q36 32 42 20" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+            <circle cx="24" cy="14" r="6" stroke="var(--primary)" stroke-width="2.5" fill="none"></circle>
+            <path d="M10 40 L38 40" stroke="var(--secondary)" stroke-width="2.5" stroke-linecap="round"></path>
+            <path d="M4 44 L44 44" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" opacity="0.5"></path>
+          </svg>
+        </div>
+        <div class="index-features-card-content">
+          <h3>צעדים ספורים מהחוף</h3>
+          <p>הים נמצא ממש מעבר לפינה. תוך דקות ספורות תוכלו להגיע לחוף, ליהנות מהגלים ולחזור רעננים.</p>
+        </div>
+      </article>
+
+      <!-- Card 2: Private & restful atmosphere -->
+      <article class="index-features-card">
+        <div class="index-features-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true" width="36" height="36">
+            <path d="M24 6 L30 18 L44 20 L34 30 L36 44 L24 38 L12 44 L14 30 L4 20 L18 18 Z" stroke="var(--primary)" stroke-width="2.5" stroke-linejoin="round" fill="none"></path>
+            <circle cx="24" cy="24" r="5" fill="var(--secondary)" opacity="0.5"></circle>
+          </svg>
+        </div>
+        <div class="index-features-card-content">
+          <h3>פרטיות ושקט מוחלטים</h3>
+          <p>מרחב אישי שנועד לשניים — ללא הפרעות, ללא שכנים צמודים. רק אתם, הרוח והים.</p>
+        </div>
+      </article>
+
+      <!-- Card 3: Bright sleeping area -->
+      <article class="index-features-card">
+        <div class="index-features-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true" width="36" height="36">
+            <rect x="6" y="22" width="36" height="18" rx="3" stroke="var(--primary)" stroke-width="2.5" fill="none"></rect>
+            <rect x="12" y="28" width="10" height="8" rx="2" stroke="var(--primary)" stroke-width="2" fill="none"></rect>
+            <rect x="26" y="28" width="10" height="8" rx="2" stroke="var(--primary)" stroke-width="2" fill="none"></rect>
+            <path d="M6 28 L6 22" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"></path>
+            <path d="M42 28 L42 22" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"></path>
+            <path d="M24 10 L24 6 M18 13 L15 10 M30 13 L33 10 M16 18 L12 18 M32 18 L36 18" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.8"></path>
+          </svg>
+        </div>
+        <div class="index-features-card-content">
+          <h3>חדר שינה מואר ומרווח</h3>
+          <p>מיטה זוגית נוחה, סדינים רכים ואור טבעי שממלא את החדר בבוקר — שינה כמו שצריך.</p>
+        </div>
+      </article>
+
+      <!-- Card 4: Family-friendly -->
+      <article class="index-features-card">
+        <div class="index-features-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true" width="36" height="36">
+            <circle cx="18" cy="12" r="5" stroke="var(--primary)" stroke-width="2.5" fill="none"></circle>
+            <circle cx="30" cy="12" r="5" stroke="var(--primary)" stroke-width="2.5" fill="none"></circle>
+            <circle cx="24" cy="32" r="4" stroke="var(--secondary)" stroke-width="2" fill="none"></circle>
+            <path d="M10 30 Q10 22 18 22 L30 22 Q38 22 38 30 L38 38 L10 38 Z" stroke="var(--primary)" stroke-width="2.5" stroke-linejoin="round" fill="none"></path>
+          </svg>
+        </div>
+        <div class="index-features-card-content">
+          <h3>מתאים לכל המשפחה</h3>
+          <p>מקום מסביר פנים לזוגות, משפחות עם ילדים וחברים — מרחב מאורגן ונוח לכולם.</p>
+        </div>
+      </article>
+
+      <!-- Card 5: Remote work corner -->
+      <article class="index-features-card">
+        <div class="index-features-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true" width="36" height="36">
+            <rect x="8" y="10" width="32" height="22" rx="3" stroke="var(--primary)" stroke-width="2.5" fill="none"></rect>
+            <path d="M16 32 L14 40 L34 40 L32 32" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round" fill="none"></path>
+            <path d="M18 40 L30 40" stroke="var(--secondary)" stroke-width="2.5" stroke-linecap="round"></path>
+            <circle cx="24" cy="21" r="3" stroke="var(--accent)" stroke-width="2" fill="none" opacity="0.8"></circle>
+          </svg>
+        </div>
+        <div class="index-features-card-content">
+          <h3>פינת עבודה שקטה</h3>
+          <p>WiFi מהיר ופינת ישיבה נוחה — אידיאלי לעבודה מרחוק בין הים לגלישה ברשת.</p>
+        </div>
+      </article>
+
+      <!-- Card 6: City & sea access -->
+      <article class="index-features-card">
+        <div class="index-features-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true" width="36" height="36">
+            <path d="M24 6 C14 6 8 14 8 22 C8 32 24 44 24 44 C24 44 40 32 40 22 C40 14 34 6 24 6 Z" stroke="var(--primary)" stroke-width="2.5" fill="none"></path>
+            <circle cx="24" cy="22" r="5" stroke="var(--primary)" stroke-width="2" fill="none"></circle>
+            <path d="M14 16 L10 12 M34 16 L38 12 M24 10 L24 6" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" opacity="0.7"></path>
+          </svg>
+        </div>
+        <div class="index-features-card-content">
+          <h3>נגישות לעיר ולים</h3>
+          <p>מיקום מרכזי בחיפה — קרוב לאטרקציות, מסעדות, קניות ובעיקר לחוף הים הנפלא.</p>
+        </div>
+      </article>
+
+    </div>
+    <!-- End Grid -->
+
+  </div>
+
+  <!-- Bottom diagonal brush-soft divider to pale sage -->
+  <div class="index-features-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,52 Q180,30 360,46 Q540,62 720,38 Q900,18 1080,42 Q1260,58 1440,34 L1440,80 Z" fill="#FCFAF5"></path>
+    </svg>
+  </div>
+
+</section>
+
+<section data-band-index="2" id="benefits" class="index-benefits-section" data-layout-spec="בית-benefits" dir="rtl">
+  <div class="index-benefits-container">
+
+    <!-- Content Column -->
+    <div class="index-benefits-content">
+
+      <!-- Section Label -->
+      <span class="index-benefits-eyebrow">
+        <svg data-no-icon-edit="true" aria-hidden="true" width="80" height="10" viewBox="0 0 80 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,5 Q10,1 20,5 T40,5 T60,5 T80,5" stroke="#4A8BB5" stroke-width="1.5" fill="none" opacity="0.6"></path>
+        </svg>
+        <small>מה מחכה לכם כאן</small>
+      </span>
+
+      <h2 class="index-benefits-heading">חופשה שמרגישה אחרת לגמרי</h2>
+      <p class="index-benefits-intro">צימר בחיפה ליד הים הוא לא רק מקום לישון — הוא הזמנה להאט, לנשום, ולגלות מחדש את ההנאה הפשוטה של בוקר שקט מול הים. בין אם אתם זוג שמחפש רגע לעצמכם, משפחה שרוצה חוויה אמיתית, או סתם מישהו שצריך לנתק — אנחנו כאן בשבילכם.</p>
+
+      <!-- Benefit Rows -->
+      <div class="index-benefits-list">
+
+        <!-- Benefit 1 -->
+        <div class="index-benefit-row">
+          <div class="index-benefit-icon-wrap">
+            <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+          </div>
+          <div class="index-benefit-text">
+            <h3>בוקר שמתחיל לאט, ליד הים</h3>
+            <p>קמים בשעה שנוחה לכם, פותחים את החלון לאוויר ים, ולוגמים קפה בלי לחץ. אין לוח זמנים, אין תור לארוחת בוקר — רק השקט שמגיע כשאתם בוחרים להיות נוכחים.</p>
+          </div>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="index-benefit-row">
+          <div class="index-benefit-icon-wrap">
+            <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <div class="index-benefit-text">
+            <h3>מרחב שמתאים לכם — זוג, משפחה, או סולו</h3>
+            <p>הצימר מתאים לקצב שלכם: לילה רומנטי לשניים, סוף שבוע משפחתי עם הילדים, או כמה ימים של עבודה שקטה מהבית הזמני שלכם בחיפה. הגמישות כאן היא חלק מהאירוח.</p>
+          </div>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="index-benefit-row">
+          <div class="index-benefit-icon-wrap">
+            <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div class="index-benefit-text">
+            <h3>שקט שעובד גם עם לפטופ פתוח</h3>
+            <p>אם הגעתם לשלב שבין חופשה לעבודה, הצימר מציע אינטרנט מהיר, פינה נוחה לישיבה, ואווירה שמאפשרת לכם לעבוד ולנשום באותו זמן. <em>דירה להשכרה בחיפה לפי ימים</em> שמרגישה כמו בית אמיתי.</p>
+          </div>
+        </div>
+
+      </div>
+      <!-- End Benefit Rows -->
+
+    </div>
+    <!-- End Content Column -->
+
+    <!-- Image Column -->
+    <div class="index-benefits-image-col">
+      <!-- Coral backplate decoration -->
+      <div class="index-benefits-backplate" aria-hidden="true"></div>
+
+      <figure class="index-benefits-figure">
+        <img loading="lazy" decoding="async" data-placeholder="index-benefits-image-1" data-context="Warm, editorial hospitality photography for a seaside vacation rental in Haifa, Israel. A quiet interior corner: a small wooden breakfast table by a large window with soft morning light streaming in, a cup of coffee and a croissant on a white plate, white linen curtains gently moving, the Mediterranean sea visible in the background through the window. Calm, sunlit, refined atmosphere. Warm tones — cream, ivory, soft blues. No people. Lifestyle photography style." width="540" height="720" src="/assets/site-index-benefits-image-1.webp" alt="פינת בוקר שקטה עם נוף לים בצימר בחיפה">
+      </figure>
+    </div>
+    <!-- End Image Column -->
+
+  </div>
+
+  <!-- Bottom section divider: soft fade to next section -->
+  <div class="index-benefits-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 L0,30 Q150,10 300,28 T600,20 Q750,12 900,26 T1200,18 L1200,60 Z" fill="var(--bg-light)"></path>
+    </svg>
+  </div>
+
+</section>
+
+<section data-band-index="3" id="gallery" class="index-gallery-section" data-layout-spec="בית-gallery" dir="rtl">
+  <div class="index-gallery-container">
+    <div class="index-gallery-header">
+      <h2 class="index-gallery-title">חוויה שמתחילה עם הבוקר הראשון</h2>
+      <p class="index-gallery-intro">מרגע שהאור הים-תיכוני נכנס דרך החלון ועד לרגע השקיעה האחרון — כל פרט בצימר תוכנן להעניק לכם שקט, יופי ותחושת בית. הציצו לפנים.</p>
+    </div>
+
+    <div class="index-gallery-grid">
+      <!-- Tile 1: Large, spans 2 rows on the start (right) side -->
+      <div class="index-gallery-tile tile-large">
+        <img loading="lazy" decoding="async" data-placeholder="index-gallery-image-1" data-context="Sunlit bedroom in a boutique vacation rental in Haifa, Israel. White linen bedding glowing in warm Mediterranean morning light streaming through sheer curtains. Wooden floor, minimal decor, creamy whites and soft blue accents. High-end hospitality photography style, soft natural shadows." width="600" height="800" src="/assets/site-index-gallery-image-1.webp" alt="חדר שינה מואר בצימר בחיפה">
+      </div>
+
+      <!-- Tile 2: Medium top-right -->
+      <div class="index-gallery-tile tile-medium-top">
+        <img loading="lazy" decoding="async" data-placeholder="index-gallery-image-2" data-context="Sea-facing window in a cozy vacation rental in Haifa. A wide window with a breathtaking view of the Mediterranean Sea and the Haifa bay. White curtains gently blowing, a wooden windowsill with a small coffee cup. Soft morning light, calm and serene atmosphere, boutique hospitality photography." width="600" height="400" src="/assets/site-index-gallery-image-2.webp" alt="נוף לים מחלון הצימר בחיפה">
+      </div>
+
+      <!-- Tile 3: Medium bottom-right -->
+      <div class="index-gallery-tile tile-medium-bottom">
+        <img loading="lazy" decoding="async" data-placeholder="index-gallery-image-3" data-context="Elegant breakfast detail shot in a vacation rental. A wooden tray with fresh croissants, a bowl of fruit, a small jar of honey, and a cup of coffee on white linen. Warm natural light from a nearby window. Israeli hospitality style, Mediterranean morning feel, soft focus background." width="600" height="400" src="/assets/site-index-gallery-image-3.webp" alt="ארוחת בוקר מפנקת בצימר">
+      </div>
+
+      <!-- Tile 4: Small horizontal bottom-left -->
+      <div class="index-gallery-tile tile-small-left">
+        <img loading="lazy" decoding="async" data-placeholder="index-gallery-image-4" data-context="A couple relaxing together in a bright vacation rental in Haifa. They are sitting on a comfortable sofa near a window with sea view, holding coffee cups, smiling softly. Natural light, airy and warm atmosphere, Mediterranean lifestyle photography, editorial style." width="600" height="300" src="/assets/site-index-gallery-image-4.webp" alt="זוג נהנה מהצימר בחיפה">
+      </div>
+
+      <!-- Tile 5: Small horizontal bottom-center -->
+      <div class="index-gallery-tile tile-small-right">
+        <img loading="lazy" decoding="async" data-placeholder="index-gallery-image-5" data-context="A clean, minimal workspace corner in a boutique vacation rental. A slim wooden desk near a window, a laptop, a small plant, and a glass of water. Bright natural light, white walls, calm and productive atmosphere. Perfect for workation stays, Israeli vacation rental, editorial hospitality photography." width="600" height="300" src="/assets/site-index-gallery-image-5.webp" alt="פינת עבודה נקייה בצימר">
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom torn-paper divider transitioning to testimonials section -->
+  <div class="index-gallery-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,70 L0,32 Q30,28 60,34 T120,30 Q155,26 190,33 T260,29 Q295,33 340,27 T420,31 Q460,28 500,34 T570,29 Q610,33 650,27 T730,32 Q770,28 810,34 T880,29 Q920,25 960,32 T1040,27 Q1080,31 1120,26 T1200,30 L1200,70 Z" fill="#F7F9FC"></path>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="4" id="testimonials" class="index-testimonials-section" data-layout-spec="בית-testimonials" dir="rtl">
+  <div class="index-testimonials-container">
+
+    <!-- Section Header -->
+    <div class="index-testimonials-header">
+      <p class="index-testimonials-eyebrow">מה אומרים האורחים שלנו</p>
+      <h2 class="index-testimonials-title">חוויות שמדברות בעד עצמן</h2>
+      <p class="index-testimonials-subtitle">אורחים שביקרו בצימר בחיפה חוזרים שוב ושוב — ומביאים איתם את הסיפורים שלהם</p>
+    </div>
+
+    <!-- Testimonial Cards Grid -->
+    <div class="index-testimonials-grid">
+
+      <!-- Card 1: Romantic Weekend -->
+      <article class="index-testimonials-card">
+        <div class="index-testimonials-quote-icon" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 28V17.2C0 13.467 0.933 10.2 2.8 7.4C4.667 4.6 7.333 2.333 10.8 0.599998L13.2 4.2C10.933 5.4 9.133 6.867 7.8 8.6C6.467 10.333 5.733 12.267 5.6 14.4H11.2V28H0ZM20.8 28V17.2C20.8 13.467 21.733 10.2 23.6 7.4C25.467 4.6 28.133 2.333 31.6 0.599998L34 4.2C31.733 5.4 29.933 6.867 28.6 8.6C27.267 10.333 26.533 12.267 26.4 14.4H32V28H20.8Z" fill="#F47C5C" fill-opacity="0.85"></path>
+          </svg>
+        </div>
+        <blockquote class="index-testimonials-quote">
+          <p>"בילינו כאן סוף שבוע רומנטי וזה היה פשוט מושלם. החדר היה נקי ומסודר להפליא, האווירה שקטה ורגועה, וים חיפה ממש מעבר לפינה. הרגשנו כמו בעולם אחר — רחוק מהשגרה, קרוב לים."</p>
+        </blockquote>
+        <footer class="index-testimonials-card-footer">
+          <div class="index-testimonials-stars" aria-label="דירוג 5 כוכבים">
+            <span aria-hidden="true">★★★★★</span>
+          </div>
+          <div class="index-testimonials-guest-info">
+            <span class="index-testimonials-guest-name">מיכל ואורי ל.</span>
+            <span class="index-testimonials-stay-type">סוף שבוע זוגי</span>
+          </div>
+        </footer>
+      </article>
+
+      <!-- Card 2: Family Stay — FEATURED/EMPHASIZED -->
+      <article class="index-testimonials-card index-testimonials-card--featured">
+        <div class="index-testimonials-accent-line" aria-hidden="true"></div>
+        <div class="index-testimonials-quote-icon" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 28V17.2C0 13.467 0.933 10.2 2.8 7.4C4.667 4.6 7.333 2.333 10.8 0.599998L13.2 4.2C10.933 5.4 9.133 6.867 7.8 8.6C6.467 10.333 5.733 12.267 5.6 14.4H11.2V28H0ZM20.8 28V17.2C20.8 13.467 21.733 10.2 23.6 7.4C25.467 4.6 28.133 2.333 31.6 0.599998L34 4.2C31.733 5.4 29.933 6.867 28.6 8.6C27.267 10.333 26.533 12.267 26.4 14.4H32V28H20.8Z" fill="#F47C5C" fill-opacity="0.85"></path>
+          </svg>
+        </div>
+        <blockquote class="index-testimonials-quote">
+          <p>"הגענו עם שני ילדים קטנים וחיפשנו מקום נוח ליד הים בחיפה. קיבלנו הרבה יותר ממה שציפינו — מקום מרווח, נקי ברמה גבוהה מאוד, ומיקום מעולה. הילדים אהבו, אנחנו נחנו — כולם יצאו מרוצים!"</p>
+        </blockquote>
+        <footer class="index-testimonials-card-footer">
+          <div class="index-testimonials-stars" aria-label="דירוג 5 כוכבים">
+            <span aria-hidden="true">★★★★★</span>
+          </div>
+          <div class="index-testimonials-guest-info">
+            <span class="index-testimonials-guest-name">משפחת כהן</span>
+            <span class="index-testimonials-stay-type">חופשה משפחתית</span>
+          </div>
+        </footer>
+      </article>
+
+      <!-- Card 3: Workation -->
+      <article class="index-testimonials-card">
+        <div class="index-testimonials-quote-icon" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 28V17.2C0 13.467 0.933 10.2 2.8 7.4C4.667 4.6 7.333 2.333 10.8 0.599998L13.2 4.2C10.933 5.4 9.133 6.867 7.8 8.6C6.467 10.333 5.733 12.267 5.6 14.4H11.2V28H0ZM20.8 28V17.2C20.8 13.467 21.733 10.2 23.6 7.4C25.467 4.6 28.133 2.333 31.6 0.599998L34 4.2C31.733 5.4 29.933 6.867 28.6 8.6C27.267 10.333 26.533 12.267 26.4 14.4H32V28H20.8Z" fill="#F47C5C" fill-opacity="0.85"></path>
+          </svg>
+        </div>
+        <blockquote class="index-testimonials-quote">
+          <p>"עבדתי מרחוק שלושה ימים וחיפשתי שקט, חיבור אינטרנט טוב ואווירה נעימה. מצאתי את כל זה כאן. הדירה מסודרת ונקייה, השכנות שקטות, והים ממש שם כשצריך לנשום. אחזור בהחלט."</p>
+        </blockquote>
+        <footer class="index-testimonials-card-footer">
+          <div class="index-testimonials-stars" aria-label="דירוג 5 כוכבים">
+            <span aria-hidden="true">★★★★★</span>
+          </div>
+          <div class="index-testimonials-guest-info">
+            <span class="index-testimonials-guest-name">דניאל מ.</span>
+            <span class="index-testimonials-stay-type">שהייה עצמאית / וורקיישן</span>
+          </div>
+        </footer>
+      </article>
+
+    </div>
+    <!-- End Grid -->
+
+    <!-- Reassurance Line -->
+    <div class="index-testimonials-reassurance">
+      <span class="index-testimonials-reassurance-icon" aria-hidden="true">
+        <svg data-no-icon-edit="true" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 1L11.163 6.22L17 6.927L12.875 10.78L14.09 17L9 14.22L3.91 17L5.125 10.78L1 6.927L6.837 6.22L9 1Z" fill="#F47C5C" stroke="#F47C5C" stroke-width="1.2" stroke-linejoin="round"></path>
+        </svg>
+      </span>
+      <p class="index-testimonials-reassurance-text">מאות אורחים מרוצים — <strong>צימר בחיפה</strong> שאפשר לסמוך עליו, בכל עונה ובכל סגנון שהייה</p>
+    </div>
+
+  </div>
+
+  <!-- Bottom Divider: smooth curve into dark stats section -->
+  <div class="index-testimonials-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,36 Q300,0 600,18 Q900,36 1200,8 L1200,72 Z" fill="#1F2430"></path>
+    </svg>
+  </div>
+
+</section>
+
+<section data-band-index="5" id="stats" class="index-stats-section" data-layout-spec="בית-stats" dir="rtl">
+  <div class="index-stats-container">
+
+    <!-- Header -->
+    <div class="index-stats-header">
+      <h2 class="index-stats-title">למה לבחור בצימר שלנו?</h2>
+      <p class="index-stats-subtitle">צימר בחיפה שמשלב נוחות, קרבה לים ואירוח חם — בין אם אתם מגיעים לרומנטיקה, חופשת משפחה, או עבודה מרחוק עם נוף לגלים.</p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="index-stats-grid">
+
+      <article class="index-stat-card">
+        <div class="index-stat-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+        </div>
+        <div class="index-stat-content">
+          <span class="index-stat-value">5 דקות</span>
+          <span class="index-stat-label">הליכה לחוף הים</span>
+        </div>
+      </article>
+
+      <article class="index-stat-card">
+        <div class="index-stat-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="index-stat-content">
+          <span class="index-stat-value">מתאים לכולם</span>
+          <span class="index-stat-label">זוגות, משפחות וחברים</span>
+        </div>
+      </article>
+
+      <article class="index-stat-card">
+        <div class="index-stat-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 8h3"></path><path d="M7 12h3"></path><path d="M14 8h3"></path><path d="M14 12h3"></path></svg>
+        </div>
+        <div class="index-stat-content">
+          <span class="index-stat-value">Wi-Fi מהיר</span>
+          <span class="index-stat-label">אידיאלי לעבודה מרחוק</span>
+        </div>
+      </article>
+
+      <article class="index-stat-card">
+        <div class="index-stat-icon">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"></path></svg>
+        </div>
+        <div class="index-stat-content">
+          <span class="index-stat-value">מענה מהיר</span>
+          <span class="index-stat-label">תקשורת ישירה עם המארח</span>
+        </div>
+      </article>
+
+    </div>
+    <!-- End Stats Grid -->
+
+    <!-- Trust Strip -->
+    <div class="index-trust-strip">
+      <div class="index-trust-item">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        <span>ביטול גמיש</span>
+      </div>
+      <div class="index-trust-divider" aria-hidden="true"></div>
+      <div class="index-trust-item">
+        <i class="fa-solid fa-star" aria-hidden="true"></i>
+        <span>דירוג גבוה באתרי הזמנות</span>
+      </div>
+      <div class="index-trust-divider" aria-hidden="true"></div>
+      <div class="index-trust-item">
+        <i class="fa-solid fa-key" aria-hidden="true"></i>
+        <span>צ'ק-אין עצמאי ונוח</span>
+      </div>
+      <div class="index-trust-divider" aria-hidden="true"></div>
+      <div class="index-trust-item">
+        <i class="fa-solid fa-broom" aria-hidden="true"></i>
+        <span>ניקיון מקצועי בין אורחים</span>
+      </div>
+      <div class="index-trust-divider" aria-hidden="true"></div>
+      <div class="index-trust-item">
+        <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+        <span>מיקום מרכזי בחיפה</span>
+      </div>
+    </div>
+    <!-- End Trust Strip -->
+
+  </div>
+
+  <!-- Bottom Divider: deep graphite fading to warm off-white with soft blue glow -->
+  <div class="index-stats-divider-wrapper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="statsSeamGlow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(29,111,163,0.18)"></stop>
+          <stop offset="40%" stop-color="rgba(29,111,163,0.06)"></stop>
+          <stop offset="100%" stop-color="#FCFAF5" stop-opacity="1"></stop>
+        </linearGradient>
+      </defs>
+      <!-- Soft blue glow band -->
+      <rect x="0" y="0" width="1440" height="100" fill="url(#statsSeamGlow)"></rect>
+      <!-- Warm off-white fill that becomes the next section -->
+      <path d="M0,100 L0,42 Q120,28 240,38 T480,30 Q600,22 720,34 T960,28 Q1080,20 1200,32 T1440,26 L1440,100 Z" fill="var(--bg-light)"></path>
+    </svg>
+  </div>
+
+</section>
+
+<section data-band-index="6" id="contact" class="index-contact-section" data-layout-spec="בית-contact" dir="rtl">
+  <div class="index-contact-container">
+
+    <!-- Right Column: Contact Invitation -->
+    <div class="index-contact-invite">
+      <div class="index-contact-badge">צרו קשר</div>
+      <h2 class="index-contact-heading">נשמח לשמוע מכם</h2>
+      <p class="index-contact-intro">רוצים לדעת אם יש פנויות? תוהים מה מתאים לכם — חופשה רומנטית, נופש משפחתי, או שבוע עבודה שקט ליד הים? אנחנו כאן לכל שאלה, גדולה כקטנה.</p>
+
+      <ul class="index-contact-reassurance">
+        <li>
+          <span class="index-contact-check" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="var(--primary)" fill-opacity="0.12"></circle><path d="M5 9.5L7.5 12L13 6.5" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+          <span>מתאים לזוגות, משפחות ועובדים מרחוק</span>
+        </li>
+        <li>
+          <span class="index-contact-check" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="var(--primary)" fill-opacity="0.12"></circle><path d="M5 9.5L7.5 12L13 6.5" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+          <span>מענה מהיר — בדרך כלל תוך כמה שעות</span>
+        </li>
+        <li>
+          <span class="index-contact-check" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="var(--primary)" fill-opacity="0.12"></circle><path d="M5 9.5L7.5 12L13 6.5" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+          <span>שאלות על זמינות, מחיר ואמנות — הכל בברוך הבא</span>
+        </li>
+        <li>
+          <span class="index-contact-check" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="var(--primary)" fill-opacity="0.12"></circle><path d="M5 9.5L7.5 12L13 6.5" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+          <span>צימר בחיפה — צעדים ספורים מהים</span>
+        </li>
+      </ul>
+
+      <a href="#contact-form" class="index-contact-cta-btn">בדקו זמינות</a>
+
+      <div class="index-contact-direct">
+        <div class="index-contact-direct-title">יצירת קשר ישיר</div>
+        <div class="index-contact-direct-items">
+          <div class="index-contact-direct-item">
+            <span class="index-contact-direct-icon" aria-hidden="true">
+              <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 13.5c-.8-.8-2-.8-2.8 0l-.9.9c-1.4-.7-2.6-1.8-3.5-3.1L10.2 10c.8-.8.8-2 0-2.8L8.8 5.8c-.8-.8-2-.8-2.8 0L4.5 7.3C3.9 7.9 3.7 8.8 4 9.7c1.1 3.2 3.9 5.8 7.2 6.9.9.3 1.8.1 2.4-.5l1.5-1.5c.8-.8.8-2-.6-1.1z" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+            
+          </div>
+          <div class="index-contact-direct-item">
+            <span class="index-contact-direct-icon" aria-hidden="true">
+              <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="14" height="10" rx="2" stroke="var(--primary)" stroke-width="1.5"></rect><path d="M3 7l7 5 7-5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"></path></svg>
+            </span>
+            
+          </div>
+          <div class="index-contact-direct-item">
+            <span class="index-contact-direct-icon" aria-hidden="true">
+              <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2C6.7 2 4 4.7 4 8c0 4.4 6 10 6 10s6-5.6 6-10c0-3.3-2.7-6-6-6zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left Column: Form + Map -->
+    <div class="index-contact-form-col">
+      <div class="index-contact-form-card" id="contact-form">
+        <h3 class="index-contact-form-title">שלחו לנו הודעה</h3>
+        <form class="contact-form" novalidate="">
+          <div class="index-contact-field-row">
+            <div class="index-contact-field">
+              <label for="contact-name">שם מלא</label>
+              <input type="text" id="contact-name" name="name" placeholder="ישראל ישראלי" required="">
+            </div>
+            <div class="index-contact-field">
+              <label for="contact-phone">טלפון</label>
+              <input type="tel" id="contact-phone" name="phone" placeholder="05X-XXXXXXX">
+            </div>
+          </div>
+          <div class="index-contact-field">
+            <label for="contact-email">דואר אלקטרוני</label>
+            <input type="email" id="contact-email" name="email" placeholder="israel@example.com" required="">
+          </div>
+          <div class="index-contact-field">
+            <label for="contact-message">הודעה</label>
+            <textarea id="contact-message" name="message" rows="4" placeholder="ספרו לנו מה אתם מחפשים — תאריכים, מספר אורחים, או כל שאלה אחרת..." required=""></textarea>
+          </div>
+          <div class="privacy-consent">
+            <label class="privacy-consent-label">
+              <input type="checkbox" name="privacy_consent" class="privacy-consent-checkbox" required="">
+              <span>קראתי ואני מסכים/ה ל<a href="/terms" target="_blank">תנאי השימוש</a> ול<a href="/privacy" target="_blank">מדיניות הפרטיות</a></span>
+            </label>
+          </div>
+          <button type="submit" class="index-contact-submit">שלחו הודעה</button>
+        </form>
+      </div>
+
+      <!-- Map Panel -->
+      <div class="index-contact-map-panel">
+        <div class="index-contact-map-visual">
+          <img loading="lazy" decoding="async" data-placeholder="index-contact-image-1" data-context="Elegant illustrated-style map or aerial view showing the vacation rental location in Haifa near the Mediterranean sea. Warm, soft watercolor or editorial illustration style showing the proximity to the beach, the Carmel mountain, and the bay. Minimal, non-data-heavy, with a calm Mediterranean palette of blues and sandy tones. The image conveys a sense of place — serene, sunlit, and inviting." width="600" height="400" src="/assets/site-index-contact-image-1.webp" alt="מפת מיקום הצימר ליד הים בחיפה">
+          <div class="index-contact-map-pins">
+            <div class="index-contact-map-pin pin-sea">
+              <span class="pin-dot"></span>
+              <span class="pin-label">חוף הים</span>
+            </div>
+            <div class="index-contact-map-pin pin-property">
+              <span class="pin-dot pin-accent"></span>
+              <span class="pin-label">הצימר שלנו</span>
+            </div>
+            <div class="index-contact-map-pin pin-carmel">
+              <span class="pin-dot"></span>
+              <span class="pin-label">הכרמל</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer" dir="rtl" role="contentinfo" aria-label="כותרת תחתונה של האתר"> <div class="footer-container"> <div class="footer-top"> <div class="footer-col footer-brand"> <img src="/assets/hospitality-vacation-rental-logo.webp" alt="צימר ליד הים בחיפה" class="logo"> <p class="footer-tagline">חוויית לינה ים-תיכונית מפנקת, ממש על שפת הים בחיפה. בואו להירגע, להתחדש ולגלות את היופי של הצפון.</p> <div class="footer-badges"> <span class="badge"><i class="fas fa-star"></i> שירות אישי 24/7</span> <span class="badge"><i class="fas fa-shield-alt"></i> הזמנה מאובטחת</span> </div> </div> <div class="footer-col footer-links"> <h3 class="footer-heading">ניווט מהיר</h3> <ul class="footer-nav"> <li><a href="#features" aria-label="עבור לתכונות">Features</a></li> <li><a href="#benefits" aria-label="עבור ליתרונות">Benefits</a></li> <li><a href="#gallery" aria-label="עבור לגלריה">Gallery</a></li> <li><a href="#testimonials" aria-label="עבור לחוות דעת">Testimonials</a></li> <li><a href="#stats" aria-label="עבור לנתונים">Stats</a></li> </ul> </div> <div class="footer-col footer-contact-col"> <h3 class="footer-heading">צור קשר</h3> <ul class="footer-contact"> <li> <span class="contact-icon"><i class="fas fa-envelope"></i></span> <span class="contact-text"><a href="mailto:[business_email]">[business_email]</a></span> </li> <li> <span class="contact-icon"><i class="fas fa-phone"></i></span> <span class="contact-text"><a href="tel:[business_phone]">[business_phone]</a></span> </li> <li><a href="/"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> <span class="contact-text">[business_address]</span></a></li> </ul> <div class="footer-hours"> <h4 class="hours-heading"><i class="fas fa-clock"></i> שעות פעילות</h4> <div class="hours-row"><span>ראשון – חמישי</span><span>08:00 – 20:00</span></div> <div class="hours-row"><span>שישי</span><span>08:00 – 14:00</span></div> <div class="hours-row"><span>שבת</span><span>סגור</span></div> </div> </div> <div class="footer-col footer-social-col"> <h3 class="footer-heading">עקבו אחרינו</h3> <p class="social-desc">הצטרפו לקהילה שלנו ברשתות החברתיות וקבלו השראה לחופשה הבאה שלכם.</p> <div class="footer-social">    </div> <div class="footer-cta"> <a href="#features" class="footer-cta-btn" aria-label="הזמן עכשיו">הזמן עכשיו <i class="fas fa-arrow-left"></i></a> </div> </div> </div> <div class="footer-divider"></div> <div class="footer-bottom"> <div class="footer-copyright"> <span>© 2026 צימר ליד הים בחיפה. כל הזכויות שמורות.</span> </div> <div class="footer-legal"> <a href="/privacy" aria-label="מדיניות פרטיות">מדיניות פרטיות</a> <span class="legal-sep" aria-hidden="true">·</span> <a href="/terms" aria-label="תנאי שימוש">תנאי שימוש</a> <span class="legal-sep" aria-hidden="true">·</span> <a href="/accessibility" aria-label="נגישות">נגישות</a> <span class="legal-sep" aria-hidden="true">·</span> <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-attribution" aria-label="נוצר באמצעות Zappy">נוצר באמצעות Zappy</a> </div> </div> </div> <div class="footer-wave" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none"> <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#1F2430"></path> </svg> </div> </footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+</body>
+</html>

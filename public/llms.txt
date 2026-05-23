@@ -1,0 +1,66 @@
+# צימר ליד הים בחיפה — Generative Engine Optimization Map
+
+> A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique character of the property are yet to be defined.
+
+---
+
+## Pages
+
+### בית
+https://-988b052f.zappy5.app
+A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique char
+
+## Legal & Policy
+
+### Privacy Policy
+https://-988b052f.zappy5.app/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://-988b052f.zappy5.app/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://-988b052f.zappy5.app/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+## How to Contact Us
+
+- (No contact details configured yet.)
+
+### Contact form
+- URL: https://-988b052f.zappy5.app
+- Endpoint: https://-988b052f.zappy5.app/api/email/contact-form
+- Method: POST
+- Content-Type: application/json
+- Fields:
+  - `name` (text, required)
+  - `phone` (tel)
+  - `email` (email, required)
+  - `message` (textarea, required)
+  - `privacy_consent` (checkbox, required)
+
+---
+
+# Business Context (for LLM understanding)
+
+## About צימר ליד הים בחיפה
+A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique character of the property are yet to be defined.
+
+## Target Audience
+- זוגות עירוניים המחפשים בריחה
+- משפחות המחפשות חופשה ליד הים
+- עובדים מרחוק המחפשים מקום נופש
+
+## Industry
+Hospitality / Vacation Rental
+
+---
+
+# Machine-readable feeds
+
+- Sitemap (XML): https://-988b052f.zappy5.app/sitemap.xml
+- Robots: https://-988b052f.zappy5.app/robots.txt
+- Flattened page text (for LLMs): https://-988b052f.zappy5.app/llms-full.txt
