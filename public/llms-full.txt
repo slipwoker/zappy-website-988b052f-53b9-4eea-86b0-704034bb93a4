@@ -2,13 +2,13 @@
 
 A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique character of the property are yet to be defined.
 
-Source: https://-988b052f.zappy5.app
+Source: https://example.com
 
 ---
 
 ## דירות לפי שעה בחיפה — צימר ליד הים בחיפה
 
-URL: https://-988b052f.zappy5.app
+URL: https://example.com
 Description: A vacation rental (zimmer) accommodation business in Israel, offering guests a getaway experience. The specific atmosphere, location, amenities, and unique char
 
 דירות לפי שעה בחיפה — צימר ליד הים בחיפה
@@ -743,7 +743,7 @@ Wi-Fi מהיר
 
 ## מדיניות פרטיות
 
-URL: https://-988b052f.zappy5.app/privacy
+URL: https://example.com/privacy
 Description: מדיניות הפרטיות שלנו - כיצד אנו אוספים, משתמשים ומגנים על המידע שלכם
 
 מדיניות פרטיות
@@ -944,7 +944,7 @@ Description: מדיניות הפרטיות שלנו - כיצד אנו אוספי
 
 ## הצהרת נגישות
 
-URL: https://-988b052f.zappy5.app/accessibility
+URL: https://example.com/accessibility
 Description: הצהרת הנגישות שלנו - מחויבותנו לנגישות דיגיטלית
 
 הצהרת נגישות
@@ -1154,7 +1154,7 @@ Description: הצהרת הנגישות שלנו - מחויבותנו לנגיש�
 
 ## תנאי שימוש
 
-URL: https://-988b052f.zappy5.app/terms
+URL: https://example.com/terms
 Description: תנאי השימוש באתר - הזכויות והחובות של המשתמשים
 
 תנאי שימוש
